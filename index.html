@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquitectura Híbrida - AgroLogistics Global</title>
+    <style>
+        :root {
+            --primary-color: #582f70;
+            --secondary-color: #5834db;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--primary-color);
+            padding: 1rem;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 2rem;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            scroll-margin-top: 90px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        p,
+        ul {
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+        }
+
+        details {
+            background-color: var(--bg-color);
+            border-left: 4px solid var(--secondary-color);
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+
+        summary {
+            font-weight: bold;
+            color: var(--primary-color);
+            outline: none;
+        }
+
+        details p {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .qos-simulator {
+            background: #eef2f5;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #dcdde1;
+        }
+
+        .slider-group {
+            margin-bottom: 1rem;
+        }
+
+        .slider-group label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 500;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        #qos-result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 4px;
+            color: white;
+            background-color: #5186cc;
+            transition: background-color 0.3s;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f2f6;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 1rem;
+                margin-top: 60px;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            nav {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#portada">Portada</a>
+        <a href="#introduccion">Introducción</a>
+        <a href="#diagnostico">Diagnóstico</a>
+        <a href="#teoria">Fundamentación</a>
+        <a href="#diseno">Diseño</a>
+        <a href="#monitoreo">Monitoreo</a>
+        <a href="#qos">Análisis QoS</a>
+        <a href="#seguridad">Seguridad</a>
+        <a href="#innovacion">Innovación</a>
+        <a href="#discusion">Discusión</a>
+        <a href="#conclusiones">Conclusiones</a>
+        <a href="#referencias">Referencias</a>
+    </nav>
+
+    <main>
+        <!-- PORTADA -->
+        <section id="portada">
+            <h1>Diseño e Integración de Arquitectura de Telecomunicaciones Híbrida</h1>
+            <p><strong>Empresa:</strong> AgroLogistics Global</p>
+            <p><strong>Ficha:</strong> 54463</p>
+            <p><strong>Elaborado por:</strong> ERISMAR ANDREINA MENDOZA MARQUEZ</p>
+            <p><strong>Institución:</strong> Corporación Unificada Nacional de Educación Superior (CUN) - Ingeniería de
+                Sistemas</p>
+            <p><strong>Asignatura:</strong> Actualización en Telecomunicaciones</p>
+        </section>
+
+        <!-- INTRODUCCIÓN -->
+        <section id="introduccion">
+            <h2>Introducción</h2>
+            <p>En la era de la transformación digital, las telecomunicaciones modernas son el pilar fundamental para la
+                competitividad y eficiencia empresarial. Actualmente, la transición de arquitecturas
+                tradicionales hacia entornos híbridos, virtuales (SDN/NFV) y basados en la nube permite a las
+                organizaciones escalar sus operaciones con agilidad. Para empresas del sector agroindustrial como
+                "AgroLogistics Global", modernizar su infraestructura de red es una necesidad estratégica urgente para
+                superar las crisis operativas derivadas de hardware rígido y obsoleto. La integración de
+                conectividad avanzada para sensores rurales, sumada a comunicaciones unificadas de alta disponibilidad,
+                garantiza la recolección continua de datos y la toma de decisiones en tiempo real, habilitando una
+                verdadera transformación digital desde el campo hasta la nube.</p>
+        </section>
+
+        <!-- DIAGNÓSTICO -->
+        <section id="diagnostico">
+            <h2>Diagnóstico del Problema</h2>
+            <ul>
+                <li><strong>Falencias de infraestructura:</strong> Redes rígidas con cuellos de botella físicos y
+                    desconexión constante de sensores IoT rurales.</li>
+                <li><strong>Riesgos operativos:</strong> Pérdida de datos agrícolas críticos y brechas de seguridad por
+                    falta de políticas en AWS/Azure.</li>
+                <li><strong>Impacto en el negocio:</strong> Pésima calidad en llamadas interurbanas (PBX análoga) que
+                    retrasa la logística y reduce la competitividad.</li>
+            </ul>
+        </section>
+
+        <!-- FUNDAMENTACIÓN TEÓRICA -->
+        <section id="teoria">
+            <h2>Fundamentación Teórica</h2>
+            <p>Conceptos clave que sustentan la modernización de la red para AgroLogistics Global:</p>
+
+            <details>
+                <summary>1. Justificación de Redes Empresariales Modernas</summary>
+                <p>Las redes tradicionales basadas en hardware rígido no escalan adecuadamente. Las redes modernas
+                    (SD-WAN, SDN) centralizan el control, permitiendo flexibilidad, reducción de costos operativos
+                    (OpEx) y adaptación ágil a los cambios del negocio agroindustrial.</p>
+            </details>
+
+            <details>
+                <summary>2. Virtualización y Cloud Computing</summary>
+                <p>La virtualización de funciones de red (NFV) reemplaza appliances físicos por software (ej. firewalls
+                    virtuales). El Cloud Computing (VPC en AWS/Azure) y los contenedores (Docker/Kubernetes)
+                    proporcionan alta disponibilidad y escalabilidad para los servicios críticos.</p>
+            </details>
+
+            <details>
+                <summary>3. Monitoreo de Redes</summary>
+                <p>El monitoreo continuo (mediante SNMP, flujos de red o telemetría) es vital para tener visibilidad
+                    operativa. Permite diagnósticos en tiempo real, previniendo caídas en la recolección de datos de los
+                    sensores y asegurando el rendimiento general de la infraestructura.</p>
+            </details>
+
+            <details>
+                <summary>4. Calidad de Servicio (QoS)</summary>
+                <p>QoS prioriza el tráfico crítico en la red. En este caso, es fundamental para garantizar que los
+                    paquetes de voz (VoIP) tengan prioridad sobre el tráfico de datos estándar, minimizando la latencia,
+                    el jitter y la pérdida de paquetes para evitar cortes en las llamadas.</p>
+            </details>
+
+            <details>
+                <summary>5. Seguridad en Telecomunicaciones</summary>
+                <p>La seguridad moderna adopta enfoques de "Zero Trust". Incluye segmentación de red, control de acceso
+                    basado en roles (RBAC), gestión de identidades (IAM) y protección de aplicaciones expuestas mediante
+                    Firewalls de Aplicaciones Web (WAF).</p>
+            </details>
+        </section>
+
+        <!-- DISEÑO DE LA SOLUCIÓN -->
+        <section id="diseno">
+            <h2>Diseño de la Solución</h2>
+            <p>La siguiente topología ilustra la arquitectura híbrida propuesta. <em>(Pasa el cursor sobre los elementos
+                    azules para ver su función)</em>:</p>
+
+            <!-- Diagrama SVG -->
+            <div style="text-align: center; margin: 2rem 0; overflow-x: auto;">
+                <svg width="700" height="350" viewBox="0 0 700 350"
+                    style="background: #ffffff; border: 1px solid #ddd; border-radius: 8px;">
+                    <style>
+                        .nodo {
+                            fill: #ecf0f1;
+                            stroke: #34495e;
+                            stroke-width: 2;
+                            transition: all 0.3s;
+                        }
+
+                        .nodo-interactivo {
+                            fill: #e8f4f8;
+                            stroke: #3498db;
+                            cursor: pointer;
+                        }
+
+                        .nodo-interactivo:hover {
+                            fill: #3498db;
+                        }
+
+                        .nodo-interactivo:hover+text {
+                            fill: white;
+                            font-weight: bold;
+                        }
+
+                        .texto {
+                            fill: #2c3e50;
+                            font-family: sans-serif;
+                            font-size: 14px;
+                            text-anchor: middle;
+                            pointer-events: none;
+                        }
+
+                        .texto-hover {
+                            fill: #2c3e50;
+                            font-family: sans-serif;
+                            font-size: 12px;
+                            font-weight: bold;
+                            text-anchor: middle;
+                            opacity: 0;
+                            transition: opacity 0.3s;
+                        }
+
+                        .nodo-interactivo:hover~.texto-hover {
+                            opacity: 1;
+                        }
+
+                        .linea {
+                            stroke: #95a5a6;
+                            stroke-width: 3;
+                            stroke-dasharray: 5, 5;
+                        }
+
+                        .linea-solida {
+                            stroke: #2c3e50;
+                            stroke-width: 3;
+                        }
+                    </style>
+
+                    <!-- Nubes / Zonas -->
+                    <rect x="20" y="20" width="200" height="300" fill="#fcfdfd" stroke="#bdc3c7" stroke-dasharray="4"
+                        rx="10" />
+                    <text x="120" y="45" class="texto" font-weight="bold">Zona Rural (IoT)</text>
+
+                    <rect x="250" y="20" width="200" height="300" fill="#fcfdfd" stroke="#bdc3c7" stroke-dasharray="4"
+                        rx="10" />
+                    <text x="350" y="45" class="texto" font-weight="bold">Sucursales (SDN)</text>
+
+                    <rect x="480" y="20" width="200" height="300" fill="#f9fbfd" stroke="#bdc3c7" stroke-dasharray="4"
+                        rx="10" />
+                    <text x="580" y="45" class="texto" font-weight="bold">Nube (AWS/Azure)</text>
+
+                    <!-- Conexiones -->
+                    <line x1="120" y1="200" x2="350" y2="150" class="linea" />
+                    <line x1="350" y1="150" x2="580" y2="150" class="linea-solida" />
+
+                    <!-- Nodos Zona Rural -->
+                    <circle cx="120" cy="100" r="35" class="nodo" />
+                    <text x="120" y="105" class="texto">Sensores</text>
+                    <circle cx="120" cy="200" r="40" class="nodo nodo-interactivo" />
+                    <text x="120" y="205" class="texto">Gateway LoRa</text>
+                    <text x="120" y="260" class="texto-hover">Conecta sensores sin internet</text>
+
+                    <!-- Nodos Sucursales -->
+                    <circle cx="350" cy="150" r="45" class="nodo nodo-interactivo" />
+                    <text x="350" y="150" class="texto">Router SDN</text>
+                    <text x="350" y="215" class="texto-hover">Gestión de tráfico centralizada</text>
+                    <circle cx="350" cy="260" r="30" class="nodo" />
+                    <text x="350" y="265" class="texto">VoIP</text>
+                    <line x1="350" y1="195" x2="350" y2="230" class="linea-solida" />
+
+                    <!-- Nodos Cloud -->
+                    <rect x="520" y="110" width="120" height="80" rx="10" class="nodo nodo-interactivo" />
+                    <text x="580" y="155" class="texto">VPC & WAF</text>
+                    <text x="580" y="215" class="texto-hover">Seguridad y Microservicios</text>
+                </svg>
+            </div>
+
+            <!-- Explicación de la Arquitectura -->
+            <h3>Arquitectura y Segmentación</h3>
+            <p>La red se segmenta mediante SDN (Software-Defined Networking) en tres zonas principales: la red IoT rural
+                conectada vía LoRaWAN, la red corporativa de las sucursales optimizada para VoIP y la red en la nube
+                (VPC) para el alojamiento de servicios. Esta segmentación previene que un ataque en los
+                sensores comprometa los datos financieros alojados en la nube.</p>
+
+            <h3>Servicios de Red</h3>
+            <p>Se virtualizan los servicios principales (NFV). El <strong>enrutamiento</strong> se gestiona a través de
+                controladores SDN (como Cisco ACI). Los servicios de resolución de nombres (<strong>DNS</strong>) y
+                asignación de IPs (<strong>DHCP</strong>) se centralizan en la nube para garantizar disponibilidad
+                global y evitar la dependencia de servidores locales físicos en cada sucursal.</p>
+
+            <h3>Integración Tecnológica (Cloud / Virtualización)</h3>
+            <p>Los datos recolectados por los sensores viajan hacia <strong>contenedores (Docker/Kubernetes)</strong>
+                orquestados en AWS o Azure. Esto elimina los servidores aislados anteriores, permitiendo escalar
+                automáticamente los recursos cuando la recolección de datos en los cultivos aumenta drásticamente.</p>
+
+            <h3>Seguridad y Control de Acceso</h3>
+            <p>La conexión hacia la nube se protege mediante túneles cifrados. El acceso a los recursos cloud está
+                restringido por políticas de <strong>IAM (Identity and Access Management)</strong> con autenticación
+                multifactor, mientras que un <strong>WAF (Web Application Firewall)</strong> filtra todo el tráfico web
+                entrante para proteger los microservicios de ataques.</p>
+        </section>
+
+        <!-- MONITOREO -->
+        <section id="monitoreo">
+            <h2>Estrategia de Monitoreo</h2>
+            <ul>
+                <li><strong>¿Qué se monitorea?</strong> Tráfico de contenedores en la nube, estado de los enlaces SD-WAN
+                    y gateways LoRaWAN.</li>
+                <li><strong>¿Cómo se monitorea?</strong> Mediante la herramienta PRTG Network Monitor y sensores
+                    SNMP/NetFlow.</li>
+                <li><strong>¿Por qué es importante?</strong> Permite a AgroLogistics detectar caídas de sensores en
+                    tiempo real y evitar puntos ciegos en la recolección de datos.</li>
+            </ul>
+        </section>
+
+        <!-- ANÁLISIS QOS -->
+        <section id="qos">
+            <h2>Análisis de Calidad de Servicio (QoS) para VoIP</h2>
+            <p>Ajusta los parámetros de la red para simular cómo afectan la calidad de las llamadas entre sucursales.
+            </p>
+            <p><strong>Interpretación para VoIP:</strong> Para evitar cortes, la <strong>latencia</strong> debe ser
+                menor a 150ms; el <strong>jitter</strong> (variación de latencia) menor a 30ms; y la <strong>pérdida de
+                    paquetes</strong> inferior al 1%. El <strong>throughput</strong> asegura el ancho de banda necesario
+                para múltiples llamadas simultáneas.</p>
+
+            <div class="qos-simulator">
+                <div class="slider-group">
+                    <label>Latencia (ms): <span id="lat-val">50</span></label>
+                    <input type="range" id="latencia" min="10" max="300" value="50">
+                </div>
+                <div class="slider-group">
+                    <label>Jitter (ms): <span id="jit-val">10</span></label>
+                    <input type="range" id="jitter" min="0" max="100" value="10">
+                </div>
+                <div class="slider-group">
+                    <label>Pérdida de Paquetes (%): <span id="loss-val">0</span></label>
+                    <input type="range" id="perdida" min="0" max="10" value="0" step="0.5">
+                </div>
+
+                <div id="qos-result">Calidad de Llamada: EXCELENTE</div>
+            </div>
+        </section>
+
+        <!-- SEGURIDAD -->
+        <section id="seguridad">
+            <h2>Seguridad en la Infraestructura</h2>
+            <ul>
+                <li><strong>Riesgos identificados:</strong> Exposición de datos en AWS/Azure por falta de control de
+                    acceso e intercepción de datos de sensores.</li>
+                <li><strong>Estrategias de mitigación:</strong> Implementación de políticas IAM/RBAC estrictas y
+                    despliegue de WAF (Web Application Firewall).</li>
+                <li><strong>Buenas prácticas:</strong> Adoptar arquitectura Zero Trust, segmentar la red (VLANs/VRF) y
+                    cifrar túneles de extremo a extremo.</li>
+            </ul>
+        </section>
+
+        <!-- INNOVACIÓN -->
+        <section id="innovacion">
+            <h2>Innovación Tecnológica</h2>
+            <p>La integración de estas tecnologías de vanguardia transforma radicalmente la operación de AgroLogistics
+                Global:</p>
+            <ul>
+                <li><strong>Cloud Computing:</strong> Migrar a una arquitectura unificada en la nube (VPC) con
+                    contenedores garantiza alta disponibilidad y escalabilidad elástica frente a picos de recolección de
+                    datos.</li>
+                <li><strong>IoT (LPWAN):</strong> El uso de tecnologías como LoRaWAN o Sigfox elimina las zonas ciegas
+                    en áreas rurales, permitiendo una transmisión eficiente de datos de los sensores con un consumo
+                    energético mínimo.</li>
+                <li><strong>SDN:</strong> Aporta agilidad y control centralizado, facilitando la gestión del tráfico y
+                    reduciendo drásticamente los tiempos de configuración frente a la red tradicional basada en
+                    hardware.</li>
+            </ul>
+        </section>
+
+        <section id="discusion">
+            <h2>Discusión: Tradicional vs Propuesta</h2>
+            <p><strong>Ventajas:</strong> La nueva propuesta elimina la dependencia física, centraliza la gestión y
+                garantiza recolección de datos continua. <strong>Limitaciones:</strong> Requiere capacitación técnica
+                del personal y una inversión inicial (CapEx) en licenciamiento y gateways.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Criterio</th>
+                        <th>Infraestructura Actual</th>
+                        <th>Solución Propuesta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Hardware</td>
+                        <td>Routers físicos y rígidos</td>
+                        <td>NFV y SDN (virtualizado)</td>
+                    </tr>
+                    <tr>
+                        <td>Voz</td>
+                        <td>Telefonía análoga antigua</td>
+                        <td>VoIP / SIP Trunking</td>
+                    </tr>
+                    <tr>
+                        <td>IoT</td>
+                        <td>Sin conectividad en campo</td>
+                        <td>Red LPWAN (LoRaWAN)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- CONCLUSIONES -->
+        <section id="conclusiones">
+            <h2>Conclusiones</h2>
+            <ul>
+                <li><strong>Reflexión técnica:</strong> La transición de una infraestructura física heredada a una
+                    virtualizada (SDN y NFV) resuelve de raíz los cuellos de botella y problemas de enrutamiento.</li>
+                <li><strong>Impacto en la organización:</strong> Implementar comunicaciones unificadas (VoIP/UCaaS) y
+                    redes IoT estables incrementará la productividad, reducirá costos operativos y mejorará la toma de
+                    decisiones basada en telemetría continua.</li>
+                <li><strong>Aprendizajes obtenidos:</strong> El diseño de una red moderna exige una visión integral que
+                    sincronice conectividad remota (LPWAN), orquestación en la nube y políticas de ciberseguridad
+                    estrictas (Zero Trust, WAF) desde la concepción de la arquitectura.</li>
+            </ul>
+        </section>
+
+        <!-- REFERENCIAS -->
+        <section id="referencias">
+            <h2>Referencias</h2>
+            <ul>
+                <li>Cisco Systems. (2023). <em>Cisco Software-Defined Access: Diseño y despliegue de redes
+                        modernas</em>. Cisco Press. https://www.cisco.com</li>
+                <li>LoRa Alliance. (2024). <em>What is LoRaWAN? A specification for LPWAN</em>.
+                    https://lora-alliance.org</li>
+                <li>Stallings, W. (2021). <em>Fundamentos de seguridad en redes corporativas y en la nube</em> (7a ed.).
+                    Pearson Educación.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        // Lógica del Simulador de QoS interactivo
+        const latenciaInput = document.getElementById('latencia');
+        const jitterInput = document.getElementById('jitter');
+        const perdidaInput = document.getElementById('perdida');
+        const resultBox = document.getElementById('qos-result');
+
+        const latVal = document.getElementById('lat-val');
+        const jitVal = document.getElementById('jit-val');
+        const lossVal = document.getElementById('loss-val');
+
+        function calcularQoS() {
+            const lat = parseInt(latenciaInput.value);
+            const jit = parseInt(jitterInput.value);
+            const loss = parseFloat(perdidaInput.value);
+
+            // Actualizar textos
+            latVal.textContent = lat;
+            jitVal.textContent = jit;
+            lossVal.textContent = loss;
+
+            // Lógica básica de QoS para VoIP
+            if (lat > 150 || jit > 30 || loss > 1) {
+                resultBox.textContent = 'Calidad de Llamada: MALA (Inaceptable para VoIP)';
+                resultBox.style.backgroundColor = '#e74c3c'; // Rojo
+            } else if (lat > 100 || jit > 20 || loss > 0.5) {
+                resultBox.textContent = 'Calidad de Llamada: REGULAR (Posible eco o cortes)';
+                resultBox.style.backgroundColor = '#f1c40f'; // Amarillo
+                resultBox.style.color = '#333';
+            } else {
+                resultBox.textContent = 'Calidad de Llamada: EXCELENTE';
+                resultBox.style.backgroundColor = '#27ae60'; // Verde
+                resultBox.style.color = 'white';
+            }
+        }
+
+        // Event Listeners
+        latenciaInput.addEventListener('input', calcularQoS);
+        jitterInput.addEventListener('input', calcularQoS);
+        perdidaInput.addEventListener('input', calcularQoS);
+    </script>
+</body>
+
+</html>
